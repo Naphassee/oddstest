@@ -1,0 +1,14 @@
+<h1>Todos</h1>
+
+<!-- ส่วนของ new form ใน Turbo Frame -->
+<%= turbo_frame_tag "new_todo" do %>
+  <%= render 'form', todo: Todo.new %>
+<% end %>
+
+<hr>
+
+<ul id="todos">
+  <% @todos.each do |todo| %>
+    <%= render 'todo', todo: todo %>
+  <% end %>
+</ul>

@@ -1,0 +1,10 @@
+<%= turbo_stream.replace "todo_#{@todo.id}" do %>
+  <li id="todo_<%= @todo.id %>">
+    <%= form_with model: @todo, url: toggle_done_todo_path(@todo), method: :patch, data: { turbo_stream: true } do |f| %>
+      <%= f.check_box :done, checked: @todo.done, onchange: "this.form.requestSubmit()" %>
+      <span style="<%= 'text-decoration: line-through;' if @todo.done %>">
+        <%= @todo.title %>
+      </span>
+    <% end %>
+  </li>
+<% end %>
