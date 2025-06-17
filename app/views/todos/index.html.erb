@@ -1,14 +1,50 @@
-<h1>Todos Odds</h1>
+<div class="min-h-screen bg-[#EFF8FF] py-8">
+  <div class="max-w-4xl mx-auto px-4">
+    <!-- Profile Image -->
+      <div class="w-full h-140 flex justify-center items-center ">
+        <%= image_tag "me.png", alt: "Profile", class: "w-full h-full object-cover" %>
+      </div>
+    <!-- Profile Header Card -->
+    <div class="bg-white rounded-2xl shadow-lg p-8 mb-4 -mt-12">
+      <div class="flex flex-col items-center text-center">
+        <!-- Name and Quote -->
+        <h1 class="text-4xl font-bold text-[#48779B] mb-2">NAPHAS SEENAKASA</h1>
+        <p class="text-[#A1BED4] text-lg italic">"Be yourself no matter whatever they say"</p>
+      </div>
+    </div>
 
-<!-- ส่วนของ new form ใน Turbo Frame -->
-<%= turbo_frame_tag "new_todo" do %>
-  <%= render 'form', todo: Todo.new %>
-<% end %>
+    <!-- Action Buttons -->
+    <div class="flex justify-between mb-4">
+      <%= link_to "VIEW MY BRAGS", brags_path, class: "bg-blue-200 shadow-lg hover:bg-blue-300 text-[#48779B] px-8 py-3 rounded-2xl font-medium transition-colors" %>
+      
+      <div class="bg-white rounded-2xl shadow-lg p-4 w-[41rem]">
+        <!-- ส่วนของ new form ใน Turbo Frame -->
+        <%= turbo_frame_tag "new_todo" do %>
+          <%= render 'form', todo: Todo.new %>
+        <% end %>
+      </div>
 
-<hr>
+    </div>
 
-<ul id="todos">
-  <% @todos.each do |todo| %>
-    <%= render 'todo', todo: todo %>
-  <% end %>
-</ul>
+    <!-- My Quests Section -->
+    <div class="bg-white rounded-2xl shadow-lg p-8">
+      <h2 class="text-2xl font-bold text-[#A1BED4] mb-6">MY QUESTS:</h2>
+
+      <hr class="my-6 border-gray-200">
+
+      <!-- Todo List -->
+      <ul id="todos" class="space-y-4">
+        <% @todos.each do |todo| %>
+          <%= render 'todo', todo: todo %>
+        <% end %>
+        
+        <% if @todos.empty? %>
+          <li id="no_quests" class="text-center py-8 text-gray-500">
+            <p class="text-xl">No quests yet!</p>
+            <p class="mt-2">Start by creating your first quest.</p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

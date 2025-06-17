@@ -29,7 +29,8 @@ class TodosController < ApplicationController
         # สมมติว่าเราต้องการ clear ฟอร์มหลังบันทึกสำเร็จ
         render turbo_stream: [
           turbo_stream.prepend('todos', partial: 'todos/todo', locals: { todo: @todo }),
-          turbo_stream.replace('new_todo', partial: 'todos/form', locals: { todo: Todo.new })
+          turbo_stream.replace('new_todo', partial: 'todos/form', locals: { todo: Todo.new }),
+          turbo_stream.remove('no_quests')
         ]
       end
       format.html { redirect_to todos_path, notice: 'Todo was successfully created.' }

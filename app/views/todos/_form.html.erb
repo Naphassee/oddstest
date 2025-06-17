@@ -2,7 +2,6 @@
   <% if todo.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
-
       <ul>
         <% todo.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,17 +10,11 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="flex gap-4">
+    <%= form.text_field :title, placeholder: "CREATE NEW QUEST", class: "border-none bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg px-4 py-2 w-full text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
+    <div class="bg-green-100 hover:bg-green-200 text-green-600 px-6 py-3 rounded-xl font-medium transition-colors flex items-center gap-2">
+      <%= form.submit "+ add" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :done, style: "display: block" %>
-    <%= form.checkbox :done %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>
