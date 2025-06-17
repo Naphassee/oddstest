@@ -5,25 +5,24 @@
         <%= image_tag "me.png", alt: "Profile", class: "w-full h-full object-cover" %>
       </div>
     <!-- Profile Header Card -->
-    <div class="bg-white rounded-2xl shadow-lg p-8 mb-4 -mt-12">
+    <div class="bg-white rounded-2xl shadow-lg p-6 mb-4 -mt-12">
       <div class="flex flex-col items-center text-center">
         <!-- Name and Quote -->
         <h1 class="text-4xl font-bold text-[#48779B] mb-2">NAPHAS SEENAKASA</h1>
         <p class="text-[#A1BED4] text-lg italic">"Be yourself no matter whatever they say"</p>
+        <%= link_to "VIEW MY BRAGS", brags_path,class: "inline-flex items-center justify-center bg-blue-200 shadow-lg hover:bg-blue-300 text-[#48779B] px-8 py-3 mt-4 rounded-2xl font-medium transition-colors text-center" %>
       </div>
     </div>
 
     <!-- Action Buttons -->
     <div class="flex justify-between mb-4">
-      <%= link_to "VIEW MY BRAGS", brags_path, class: "bg-blue-200 shadow-lg hover:bg-blue-300 text-[#48779B] px-8 py-3 rounded-2xl font-medium transition-colors" %>
       
-      <div class="bg-white rounded-2xl shadow-lg p-4 w-[41rem]">
+      <div class="bg-white rounded-2xl shadow-lg p-4 w-full">
         <!-- ส่วนของ new form ใน Turbo Frame -->
         <%= turbo_frame_tag "new_todo" do %>
           <%= render 'form', todo: Todo.new %>
         <% end %>
       </div>
-
     </div>
 
     <!-- My Quests Section -->
