@@ -72,7 +72,13 @@ class TodosController < ApplicationController
     @todo.update(done: !@todo.done)
 
     respond_to do |format|
-      format.turbo_stream
+      format.turbo_stream {
+        render turbo_stream: turbo_stream.replace(
+          "todo_#{@todo.id}",
+          partial: "todos/todo",
+          locals: { todo: @todo }
+        )
+      }
       format.html { redirect_to todos_path }
     end
   end
